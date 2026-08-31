@@ -1,4 +1,4 @@
-:root{
+  :root{
     --cream:#FBF3E7;
     --cream-deep:#F3E6D3;
     --ink:#231F1B;
@@ -203,14 +203,26 @@
     padding:6px 12px;border-radius:20px;letter-spacing:.02em;white-space:nowrap;
   }
 
-  /* ===== EVENT CARD internals (date chip + info) ===== */
-  .event-date{
-    background:var(--ink);color:#fff;text-align:center;padding:10px 14px;border-radius:2px;min-width:60px;flex-shrink:0;
+  /* ===== EVENT CARD (photo recap style) ===== */
+  .event-card{
+    background:var(--paper);border-radius:3px;overflow:hidden;
+    box-shadow:0 10px 26px rgba(80,60,40,.07);
+    transition:transform .3s ease, box-shadow .3s ease;
   }
-  .event-date .d{font-family:'Playfair Display',serif;font-size:1.25rem;line-height:1;}
-  .event-date .m{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;margin-top:4px;}
-  .event-info h4{font-size:.96rem;margin-bottom:5px;font-weight:500;font-family:'Jost',sans-serif;}
-  .event-info p{font-size:.82rem;color:#6B6459;font-weight:300;line-height:1.6;}
+  .event-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(80,60,40,.13);}
+  .event-card .img{position:relative;aspect-ratio:16/10;overflow:hidden;}
+  .event-card .img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+  .event-card:hover .img img{transform:scale(1.06);}
+  .event-date-badge{
+    position:absolute;top:14px;left:14px;
+    background:var(--ink);color:#fff;
+    padding:6px 13px;border-radius:20px;
+    font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500;
+    box-shadow:0 4px 10px rgba(0,0,0,.2);
+  }
+  .event-card .body{padding:22px 22px 26px;}
+  .event-card h4{font-size:1.05rem;margin-bottom:10px;font-weight:500;font-family:'Playfair Display',serif;}
+  .event-card p{font-size:.87rem;line-height:1.75;color:#5B554D;font-weight:300;}
 
   /* ===== CONTACT ===== */
   .contact{background:var(--paper);text-align:center;}
@@ -348,12 +360,7 @@
     content:"";position:absolute;left:50%;bottom:0;transform:translateX(-50%);
     width:52px;height:3px;background:var(--vermilion);
   }
-  .events-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
-  .event-card{
-    background:var(--paper);border-radius:3px;padding:26px 24px;
-    box-shadow:0 10px 26px rgba(80,60,40,.07);
-    display:flex;gap:16px;align-items:flex-start;
-  }
+  .events-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:26px;}
 
   /* ===== responsive ===== */
   @media (max-width:860px){
